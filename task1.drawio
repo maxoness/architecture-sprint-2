@@ -1,0 +1,89 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/26.1.1 Chrome/132.0.6834.210 Electron/34.3.3 Safari/537.36" version="26.1.1" pages="2">
+  <diagram id="aYzEkiC1uwKh-5xy05j2" name="Final Scheme">
+    <mxGraphModel dx="2060" dy="1190" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="3300" pageHeight="2339" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="Progress" id="-H_mtQnk-PTXWXPvYvuk">
+    <mxGraphModel dx="1331" dy="969" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="3300" pageHeight="2339" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="XxNoFmPshH_-kDe5bTp--2" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="10" y="10" width="580" height="330" as="geometry" />
+        </mxCell>
+        <mxCell id="zA23MoTUsTF4_91t8viU-2" value="MongoDB" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;" parent="1" vertex="1">
+          <mxGeometry x="360" y="140" width="60" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="zA23MoTUsTF4_91t8viU-3" value="pymongo-api" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="160" y="150" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="zA23MoTUsTF4_91t8viU-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="zA23MoTUsTF4_91t8viU-3" target="zA23MoTUsTF4_91t8viU-2" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="XxNoFmPshH_-kDe5bTp--3" value="Шаг 0: Исходная" style="text;strokeColor=none;fillColor=none;html=1;fontSize=24;fontStyle=1;verticalAlign=middle;align=left;" vertex="1" parent="1">
+          <mxGeometry x="20" y="30" width="560" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="XxNoFmPshH_-kDe5bTp--4" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="640" y="10" width="660" height="330" as="geometry" />
+        </mxCell>
+        <mxCell id="XxNoFmPshH_-kDe5bTp--6" value="pymongo-api" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="760" y="200" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="XxNoFmPshH_-kDe5bTp--7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="XxNoFmPshH_-kDe5bTp--6" target="XxNoFmPshH_-kDe5bTp--10">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="960" y="230" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="XxNoFmPshH_-kDe5bTp--9" value="Шаг 0: Шардирование" style="text;strokeColor=none;fillColor=none;html=1;fontSize=24;fontStyle=1;verticalAlign=middle;align=left;" vertex="1" parent="1">
+          <mxGeometry x="650" y="30" width="560" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="XxNoFmPshH_-kDe5bTp--10" value="Роутер" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="960" y="200" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="XxNoFmPshH_-kDe5bTp--11" value="MongoDB&lt;div&gt;Шард 1&lt;/div&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;" vertex="1" parent="1">
+          <mxGeometry x="1140" y="140" width="60" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="XxNoFmPshH_-kDe5bTp--12" value="MongoDB&lt;div&gt;Шард 2&lt;/div&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;" vertex="1" parent="1">
+          <mxGeometry x="1140" y="250" width="60" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="XxNoFmPshH_-kDe5bTp--13" value="Конфигурационный сервер" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="960" y="90" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="XxNoFmPshH_-kDe5bTp--14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="XxNoFmPshH_-kDe5bTp--10" target="XxNoFmPshH_-kDe5bTp--11">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="890" y="240" as="sourcePoint" />
+            <mxPoint x="970" y="240" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="XxNoFmPshH_-kDe5bTp--15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="XxNoFmPshH_-kDe5bTp--10" target="XxNoFmPshH_-kDe5bTp--12">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1090" y="240" as="sourcePoint" />
+            <mxPoint x="1150" y="190" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="XxNoFmPshH_-kDe5bTp--17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitPerimeter=0;" edge="1" parent="1" source="XxNoFmPshH_-kDe5bTp--12" target="XxNoFmPshH_-kDe5bTp--13">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1080" y="120" as="sourcePoint" />
+            <mxPoint x="1170" y="140" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="XxNoFmPshH_-kDe5bTp--18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitPerimeter=0;" edge="1" parent="1" source="XxNoFmPshH_-kDe5bTp--11" target="XxNoFmPshH_-kDe5bTp--13">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1210" y="300" as="sourcePoint" />
+            <mxPoint x="1090" y="130" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="XxNoFmPshH_-kDe5bTp--19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="XxNoFmPshH_-kDe5bTp--10" target="XxNoFmPshH_-kDe5bTp--13">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1220" y="310" as="sourcePoint" />
+            <mxPoint x="1100" y="140" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
