@@ -1,9 +1,122 @@
+name: "mongo-sharding"
 services:
-  mongodb1:
-    container_name: mongodb1
+  #сервер конфигурации
+  configSrv:
     image: dh-mirror.gitverse.ru/mongo:latest
+    container_name: configSrv
+    restart: always
+    ports:
+      - "27017:27017"
+    networks:
+      app-network:
+        ipv4_address: 173.17.0.10
     volumes:
-      - mongodb1_data_container:/data/db
+      - config-data-max:/data/db
+    command:
+      [
+        "--configsvr",
+        "--replSet",
+        "config_server",
+        "--bind_ip_all",
+        "--port",
+        "27017"
+      ]
+    healthcheck:
+      test: [ "CMD", "mongo", "--eval", "db.adminCommand('ping')" ]
+      interval: 10s
+      retries: 5
+      start_period: 30s
+      timeout: 10s
+  #shard1
+  shard1:
+    image: dh-mirror.gitverse.ru/mongo:latest
+    container_name: shard1
+    restart: always
+    ports:
+      - "27018:27018"
+    networks:
+      app-network:
+        ipv4_address: 173.17.0.8
+    volumes:
+      - shard1-data-max:/data/db
+    command:
+      [
+        "--shardsvr",
+        "--replSet",
+        "shard1",
+        "--bind_ip_all",
+        "--port",
+        "27018"
+      ]
+    depends_on:
+      - configSrv
+    healthcheck:
+      test: [ "CMD", "mongo", "--eval", "db.adminCommand('ping')" ]
+      interval: 10s
+      retries: 5
+      start_period: 30s
+      timeout: 10s
+
+  #shard2
+  shard2:
+    container_name: shard2
+    image: dh-mirror.gitverse.ru/mongo:latest
+    restart: always
+    ports:
+      - "27019:27019"
+    networks:
+      app-network:
+        ipv4_address: 173.17.0.9
+    volumes:
+      - shard2-data-max:/data/db
+    command:
+      [
+        "--shardsvr",
+        "--replSet",
+        "shard2",
+        "--bind_ip_all",
+        "--port",
+        "27019"
+      ]
+    depends_on:
+      - configSrv
+    healthcheck:
+      test: [ "CMD", "mongo", "--eval", "db.adminCommand('ping')" ]
+      interval: 10s
+      retries: 5
+      start_period: 30s
+      timeout: 10s
+
+  #mongos_router1
+  mongos_router1:
+    image: dh-mirror.gitverse.ru/mongo:latest
+    container_name: mongos_router1
+    depends_on:
+      shard1: 
+        condition: service_started
+    restart: always
+    ports:
+      - "27020:27020"
+    networks:
+      app-network:
+        ipv4_address: 173.17.0.7
+    command:
+       [
+         "mongos", 
+         "--configdb", 
+         "config_server/configSrv:27017",
+         "--bind_ip_all",
+         "--port",
+         "27020"
+       ]
+    healthcheck:
+      test: [ "CMD", "mongo", "--eval", "db.adminCommand('ping')" ]
+      interval: 10s
+      retries: 5
+      start_period: 30s
+      timeout: 10s
+    volumes:
+      - mongos_router1-data-max:/data/db
 
   pymongo_api:
     container_name: pymongo_api
@@ -12,13 +125,27 @@ services:
       dockerfile: Dockerfile
     image: kazhem/pymongo_api:1.0.0
     depends_on:
-      - mongodb1
+      mongos_router1: 
+        condition: service_started
     ports:
       - 8080:8080
+    networks:
+      app-network:
+        ipv4_address: 173.17.0.11
     environment:
-      MONGODB_URL: "mongodb://mongodb1"
+      MONGODB_URL: "mongodb://mongos_router1:27020"
       MONGODB_DATABASE_NAME: "somedb"
 
+networks:
+  app-network:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 173.17.0.0/16    
 
 volumes:
-  mongodb1_data_container:
+  config-data-max:
+  shard1-data-max:
+  shard2-data-max:
+  mongos_router1-data-max:
