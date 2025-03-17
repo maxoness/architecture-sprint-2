@@ -23,7 +23,6 @@ echo --------- Document count in shard2-1 \(Master\) ------
 docker compose exec -T shard2-1 mongosh --port 27022 --quiet <<EOF
 use somedb;
 db.helloDoc.countDocuments();
-db.printReplicationInfo();
 EOF
 
 echo ---------  Document count in shard2-2 \(Slave\) ------ 
