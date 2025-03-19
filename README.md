@@ -7,7 +7,10 @@
 ```shell
 ./sharding-repl-cache/init-with-sharding-repl_cache.sh
 ```
-### Альтернативная последовательность команд
+
+> [!NOTE]
+> Альтернатив скрипту, если по какой-то причине не запускается
+###  Последовательность команд
 #### Развертывание приложений в Docker
 ```shell
 docker compose up -d
@@ -87,7 +90,7 @@ EOF
 ./sharding-repl-cache/check-count.sh
 ```
 ## Проверка приложения
-### Общее (шарды/реплики)
+### Общее _(шарды/реплики)_
 Перейти по ссылке http://localhost:8080/docs#/default/root__get
 ### Кэширование
 Перейти по ссылке http://localhost:8080/docs#/default/list_users__collection_name__users_get и выполнить, передав helloDoc в collection_name
