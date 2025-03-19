@@ -14,7 +14,6 @@
 <summary> (<i>Развернуть</i>)</summary>
   <!-- have to be followed by an empty line! -->
 
-## *formatted* **heading** with [a](link)
 ###  Последовательность команд
 #### Развертывание приложений в Docker
 ```shell
