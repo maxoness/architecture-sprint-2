@@ -8,8 +8,12 @@
 ./sharding-repl-cache/init-with-sharding-repl_cache.sh
 ```
 
-> [!NOTE]
-> Альтернатива скрипту, если по какой-то причине не запускается
+>[!NOTE] Альтернатива скрипту, если по какой-то причине не запускается
+<details>
+<summary> (<i>Развернуть</i>)</summary>
+  <!-- have to be followed by an empty line! -->
+
+## *formatted* **heading** with [a](link)
 ###  Последовательность команд
 #### Развертывание приложений в Docker
 ```shell
@@ -85,6 +89,8 @@ use somedb
 for(var i = 0; i < 1000; i++) db.helloDoc.insertOne({age:i, name:"ly"+i})
 EOF
 ```
+</details>
+
 ## Проверка распределения данных по шардам и общее количество
 ```shell
 ./sharding-repl-cache/check-count.sh
