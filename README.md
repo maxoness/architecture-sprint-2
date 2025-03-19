@@ -8,7 +8,8 @@
 ./sharding-repl-cache/init-with-sharding-repl_cache.sh
 ```
 
->[!NOTE] Альтернатива скрипту, если по какой-то причине не запускается
+>[!NOTE] 
+>Альтернатива скрипту, если по какой-то причине не запускается
 <details>
 <summary> (<i>Развернуть</i>)</summary>
   <!-- have to be followed by an empty line! -->
