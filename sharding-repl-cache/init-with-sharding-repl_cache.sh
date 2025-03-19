@@ -1,14 +1,18 @@
 #!/bin/bash
 
 ###
-# доконфигурируем шарды MongoDB
+# Развертывание приложений в Docker
 ###
 
 docker compose up -d
 
-#sleep 5 seconds for shard service loading. Otherwise connections can be rejected
-echo Sleeping 5 seconds for shard service loading. Otherwise connections can be rejected
-sleep 5
+#sleep 7 seconds for shard service loading. Otherwise connections can be rejected
+echo Sleeping 7 seconds for shard service loading. Otherwise connections can be rejected
+sleep 7
+
+###
+# Доконфигурирование конфигурации и шардов MongoDB
+###
 
 docker compose exec -T configSrv mongosh --port 27017 --quiet <<EOF
 rs.initiate(
@@ -52,6 +56,10 @@ EOF
 echo Sleeping 5 seconds for router service loading. Otherwise connections can be rejected
 sleep 5
 
+###
+# Доконфигурирование mongos роутеров MongoDB
+###
+
 docker compose exec -T mongos_router1 mongosh --port 27025 --quiet <<EOF
 sh.addShard( "ReplicaSet1/shard1-1:27018");
 sh.addShard( "ReplicaSet1/shard1-2:27019");
@@ -64,6 +72,10 @@ sh.addShard( "ReplicaSet2/shard2-3:27024");
 sh.enableSharding("somedb");
 sh.shardCollection("somedb.helloDoc", { "name" : "hashed" });
 EOF
+
+###
+# Наполнение MongoDB данными
+###
 
 docker compose exec -T mongos_router2 mongosh --port 27021 --quiet <<EOF
 sh.addShard( "ReplicaSet1/shard1-1:27018");
